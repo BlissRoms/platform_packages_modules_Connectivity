@@ -695,9 +695,9 @@ DEFINE_NETD_BPF_PROG_KVER("cgroupsock/inet_create", AID_ROOT, AID_ROOT, inet_soc
     uint64_t uid = bpf_get_current_uid_gid() & 0xffffffff;
     // A return value of 1 means allow, everything else means deny.
     if (get_app_permissions(uid) & BPF_PERMISSION_INTERNET) {
-      return bpf_owner_firewall_match(uid) == PASS ? 1 : 0;
+        return bpf_owner_firewall_match(uid) == PASS ? 1 : 0;
     } else {
-      return 0;
+        return 0;
     }
 }
 
